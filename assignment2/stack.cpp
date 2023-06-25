@@ -33,7 +33,7 @@
 	stack& stack::operator=(const stack& stk) {
 		stack_size = stk.stack_size;
 		array_capacity = stk.array_capacity;
-		delete values;
+		delete[] values;
 		values = new int[array_capacity];
 		for(int i = 0; i < stack_size; ++i) {
 			values[i] = stk.values[i];
@@ -47,7 +47,7 @@
 			for(int i = 0; i < stack_size; ++i) {
 				new_values[i] = values[i];
 			}
-			delete values;
+			delete[] values;
 			values = new_values;
 			values[stack_size] = val;
 			stack_size++;
@@ -96,5 +96,5 @@
 
 	// Destructor
 	stack::~stack() {
-		delete values;
+		delete[] values;
 	}
